@@ -1,10 +1,11 @@
 import "./global.css"
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
+import NavBar from '@/components/navbar/NavBar';
 
 const App = () => {
-  return <h1 className="text-yellow-400">Hello, React with Webpack and TypeScript!</h1>;
+  return <NavBar/>;
 };
 
 

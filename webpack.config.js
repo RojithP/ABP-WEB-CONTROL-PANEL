@@ -39,24 +39,27 @@ const config = {
                 type: 'asset',
             },
             {
-                test: /\.(js|jsx|ts|tsx)$/,  
+                test: /\.(js|jsx|ts|tsx)$/,
                 exclude: /node_modules/,
                 use: {
-                  loader: "babel-loader",
-                  options: {
-                    presets: [
-                      "@babel/preset-env",
-                      "@babel/preset-react",
-                      "@babel/preset-typescript" 
-                    ],
-                  },
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
+                            "@babel/preset-env",
+                            "@babel/preset-react",
+                            "@babel/preset-typescript"
+                        ],
+                    },
                 },
-              },
+            },
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
-    },
+        alias: {
+          '@': path.resolve(__dirname, 'src'),
+        },
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+      },
 };
 
 module.exports = () => {

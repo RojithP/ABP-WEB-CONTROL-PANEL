@@ -1,15 +1,20 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
     "module": "ESNext",
     "target": "es5",
     "allowJs": true,
     "moduleResolution": "Node",
-    "jsx": "react",
+    "jsx": "preserve",
     "skipLibCheck": true,
     "strict": true,
-    "lib": ["DOM","ESNext"]
+    "lib": ["DOM","ESNext"],
+    "paths": {
+      "@/*": ["./src/*"] ,
+    },
   },
+  
   "files": ["src/web.tsx"]
 }
