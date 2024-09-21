@@ -8,7 +8,7 @@ const isProduction = process.env.NODE_ENV == 'production';
 const stylesHandler = 'style-loader';
 
 const config = {
-    entry: './src/web.ts',
+    entry: './src/web.tsx',
     output: {
         path: path.resolve(__dirname, 'out/web'),
     },
@@ -31,13 +31,27 @@ const config = {
                 exclude: ['/node_modules/'],
             },
             {
-                test: /\.css$/i,
+                test: /\.css$/,
                 use: [stylesHandler, 'css-loader', 'postcss-loader'],
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
                 type: 'asset',
             },
+            {
+                test: /\.(js|jsx|ts|tsx)$/,  
+                exclude: /node_modules/,
+                use: {
+                  loader: "babel-loader",
+                  options: {
+                    presets: [
+                      "@babel/preset-env",
+                      "@babel/preset-react",
+                      "@babel/preset-typescript" 
+                    ],
+                  },
+                },
+              },
         ],
     },
     resolve: {
@@ -49,7 +63,7 @@ module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
         config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
-        
+
     } else {
         config.mode = 'development';
     }

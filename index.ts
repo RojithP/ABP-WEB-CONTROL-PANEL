@@ -1,4 +1,6 @@
 import express from "express"
+import 'dotenv/config' // LOAD ENVIRONMENT VARIABLES FOR SERVER
+
 
 const app=express();
 
